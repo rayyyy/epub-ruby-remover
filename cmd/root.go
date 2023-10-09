@@ -43,7 +43,7 @@ var rootCmd = &cobra.Command{
 			return err
 		}
 
-		// 拡張子を取得してepubかどうかを判定する
+		// check file extension
 		if match, _ := regexp.MatchString(`\.epub$`, args[0]); !match {
 			return fmt.Errorf("invalid file extension")
 		}
@@ -99,7 +99,7 @@ var rootCmd = &cobra.Command{
 
 				modifiedData := internal.RemoveRuby(string(data))
 
-				// 新しいZIPファイルに書き込む
+				// create new file
 				newFile, err := newZipWriter.Create(f.Name)
 				if err != nil {
 					slog.Error("Error creating new file:", err)
@@ -111,7 +111,7 @@ var rootCmd = &cobra.Command{
 					return
 				}
 			} else {
-				// XHTML/HTML以外のファイルはそのままコピー
+				// Other files are just copied.
 				newFile, err := newZipWriter.Create(f.Name)
 				if err != nil {
 					slog.Error("Error creating new file:", err)
