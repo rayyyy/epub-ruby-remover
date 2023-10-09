@@ -17,6 +17,7 @@ var dirCmd = &cobra.Command{
 	Short: "Removes ruby tags from all epub files in the specified directory",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
+		slog.Info("Removing ruby tags from all epub files in the specified directory", args[0])
 		// 対象のディレクトリのすべてのepubファイルを取得
 		pattern := `*\.epub`
 		files, err := filepath.Glob(filepath.Join(args[0], pattern))
