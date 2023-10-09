@@ -29,11 +29,12 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "epub-ruby-remover",
+	Use:   "epub-ruby-remover [epub_file]",
 	Short: "Removes ruby tags from epub files",
 	Long:  `Removes ruby tags from epub files.`,
+	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		log.Println("epub-ruby-remover called")
+		log.Println(args)
 	},
 }
 
@@ -55,5 +56,4 @@ func init() {
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
