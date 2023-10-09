@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRemoveRuby(t *testing.T) {
+func TestRemoveRubyTag(t *testing.T) {
 	testCases := []struct {
 		html     string
 		expected string
@@ -54,7 +54,7 @@ func TestRemoveRuby(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := RemoveRuby(testCase.html)
+		actual := RemoveRubyTag(testCase.html)
 		assert.Equal(t, testCase.expected, actual)
 	}
 }
